@@ -23,18 +23,3 @@ dependencies {
 	testCompile "org.mockito:mockito-all:1.8.0"
 	testCompile "org.hamcrest:hamcrest-all:1.1"
 }
-
-task copyRuntimeDependencies(dependsOn: configurations.runtime.buildArtifacts, type: Copy) {
-    into('build/output/lib')
-    from configurations.default
-    from configurations.default.allArtifacts*.file
-}
-
-task copyTestDependencies(dependsOn: configurations.runtime.buildArtifacts, type: Copy) {
-    into('build/output/test-lib')
-    from configurations.testCompile
-    from configurations.testCompile.allArtifacts*.file
-}
-
-task deps
-deps.dependsOn copyTestDependencies, copyRuntimeDependencies
