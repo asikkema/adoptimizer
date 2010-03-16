@@ -40,8 +40,4 @@ dependencies {
 	testCompile "junit:junit:4.7"
 	testCompile "org.mockito:mockito-all:1.8.0"
 	testCompile "org.hamcrest:hamcrest-all:1.1"
-
-	runtime "org.apache.cxf:cxf-tools-wsdlto-core:2.2.6"
-	runtime "org.apache.cxf:cxf-tools-wsdlto-frontend-jaxws:2.2.6"
-	runtime "org.apache.cxf:cxf-tools-wsdlto-databinding-jaxb:2.2.6"
 }

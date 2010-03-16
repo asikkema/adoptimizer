@@ -1,7 +1,8 @@
 build
 .project
-.classpath
+.classpath*
 *.iml
+*.eml
 *.ipr
 *.iws
 .idea
