@@ -1,0 +1,23 @@
+usePlugin 'java'
+
+group = "com.xebia.adoptimizer"
+version = "0.1-SNAPSHOT"
+
+repositories {
+	mavenRepo urls: "file://" + System.getProperty('user.home') + "/.m2/repository/"
+	mavenRepo urls: 'http://s3.amazonaws.com/maven.springframework.org/snapshot'
+	mavenRepo urls: 'http://s3.amazonaws.com/maven.springframework.org/milestone'
+	mavenCentral()
+}
+
+sourceCompatibility = 1.6
+
+springVersion = "3.0.1.RELEASE-A"
+
+dependencies {
+	compile "org.slf4j:slf4j-api:1.4.2"
+	compile "org.slf4j:slf4j-log4j12:1.4.2"
+	testCompile "junit:junit:4.7"
+	testCompile "org.mockito:mockito-all:1.8.0"
+	testCompile "org.hamcrest:hamcrest-all:1.1"
+}
