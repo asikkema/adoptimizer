@@ -18,7 +18,7 @@ repositories {
 	mavenCentral()
 	add(new org.apache.ivy.plugins.resolver.URLResolver()) {
 		name = "GitHub"
-		addArtifactPattern 'http://github.com/asikkema/adoptimizer/downloads/[module]-[artifact]-[revision].[ext]'
+		addArtifactPattern 'http://github.com/asikkema/adoptimizer/downloads/[organization]-[module]-[revision].[ext]'
 	}
 }
 
@@ -30,12 +30,9 @@ dependencies {
 	compile "org.slf4j:slf4j-api:1.4.2"
 	compile "org.slf4j:slf4j-log4j12:1.4.2"
 
-	compile(":gdata:2.1") {
-		artifact { name="analytics"; type="jar" }
-	}
-	compile(":gdata:2.1") {
-		artifact { name="analytics-meta"; type="jar" }
-	}
+	compile "gdata:client:1.0@jar"
+	compile "gdata:analytics:2.1@jar"
+	compile "gdata:analytics-meta:2.1@jar"
 
 	testCompile "junit:junit:4.7"
 	testCompile "org.mockito:mockito-all:1.8.0"
