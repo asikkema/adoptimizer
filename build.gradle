@@ -1,3 +1,9 @@
+/*
+Usage:
+Run 'gradle eclipse' to generate eclipse project files and import those into an IDE that supports
+them.
+ */
+
 defaultTasks 'build'
 usePlugin 'java'
 usePlugin 'eclipse'
