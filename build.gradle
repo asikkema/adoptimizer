@@ -29,4 +29,5 @@ dependencies {
 	testCompile "org.mockito:mockito-all:1.8.0"
 	testCompile "org.hamcrest:hamcrest-all:1.1"
     compile fileTree(dir: 'lib', includes: ['*.jar'])
+    test ""
 }

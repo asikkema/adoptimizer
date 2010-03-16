@@ -1,6 +1,6 @@
 build
 .project
-.classpath
+.classpath*
 *.iml
 *.ipr
 *.iws
