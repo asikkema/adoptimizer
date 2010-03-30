@@ -4,11 +4,14 @@ import com.google.gdata.client.analytics.AnalyticsService;
 import com.google.gdata.data.analytics.*;
 import com.google.gdata.util.AuthenticationException;
 import com.google.gdata.util.ServiceException;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -17,9 +20,17 @@ import static org.junit.Assert.assertThat;
  * @author albertsikkema
  */
 public class AnalyticsIntegrationTest {
-    private static final String CLIENT_USERNAME = "xxx";
-    private static final String CLIENT_PASS = "xxx";
+    private static final String CLIENT_USERNAME = "google.user";
+    private static final String CLIENT_PASS = "google.password";
     private AccountFeed accountFeed;
+    private Properties props;
+
+    @Before
+    public void readProperties() throws IOException {
+        InputStream stream = AnalyticsIntegrationTest.class.getClassLoader().getResourceAsStream("googleauth.properties");
+        props = new Properties();
+        props.load(stream);
+    }
 
     @Test
     public void shouldInvokeAnalyticsAndGetSomething() throws ServiceException, IOException {
@@ -27,7 +38,7 @@ public class AnalyticsIntegrationTest {
         AnalyticsService analyticsService = new AnalyticsService("gaExportAPI_acctSample_v2.0");
 
         // ClientLogin Authorization.
-        analyticsService.setUserCredentials(CLIENT_USERNAME, CLIENT_PASS);
+        analyticsService.setUserCredentials(props.getProperty(CLIENT_USERNAME), props.getProperty(CLIENT_PASS));
 
         URL queryUrl = new URL("https://www.google.com/analytics/feeds/accounts/default?max-results=50");
         accountFeed = analyticsService.getFeed(queryUrl, AccountFeed.class);
