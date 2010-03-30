@@ -35,6 +35,9 @@ dependencies {
 	compile "gdata:analytics-meta:2.1@jar"
     compile "gdata:core:1.0@jar"
     compile "gdata:base:1.0@jar"
+    compile "gdata:maps:2.0@jar"
+    compile "gdata:maps-meta:2.0@jar"
+    compile "google:collect:1.0@jar"
 
 	testCompile "junit:junit:4.7"
 	testCompile "org.mockito:mockito-all:1.8.0"
