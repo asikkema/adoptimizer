@@ -3,19 +3,28 @@ package com.xebia.adoptimizer.analytics;
 import com.google.gdata.client.analytics.AnalyticsService;
 import com.google.gdata.client.analytics.DataQuery;
 import com.google.gdata.data.analytics.*;
+import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class AnalyticsDataFeedTest {
-    private static final String CLIENT_USERNAME = "INSERT_LOGIN_EMAIL_HERE";
-    private static final String CLIENT_PASS = "INSERT_PASSWORD_HERE";
     private static final String TABLE_ID = "INSERT_TABLE_ID_HERE";
 
     public DataFeed feed;
+    private Properties props;
 
+    @Before
+    public void readProperties() throws IOException {
+        InputStream stream = AnalyticsIntegrationTest.class.getClassLoader().getResourceAsStream("googleauth.properties");
+        props = new Properties();
+        props.load(stream);
+    }
 
     /**
      * Creates a new service object, attempts to authorize using the Client Login
@@ -27,7 +36,7 @@ public class AnalyticsDataFeedTest {
         AnalyticsService as = new AnalyticsService("gaExportAPI_acctSample_v2.0");
 
         // Client Login Authorization.
-        as.setUserCredentials(CLIENT_USERNAME, CLIENT_PASS);
+        as.setUserCredentials(props.getProperty("google.user"), props.getProperty("google.password"));
 
         // GA Data Feed query uri.
         String baseUrl = "https://www.google.com/analytics/feeds/data";
