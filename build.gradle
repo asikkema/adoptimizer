@@ -28,6 +28,8 @@ sourceCompatibility = 1.6
 springVersion = "3.0.2.RELEASE"
 
 dependencies {
+	compile 'com.google.gwt:gwt-user:2.0.3'
+	compile 'com.google.gwt:gwt-dev:2.0.3'
 	compile "org.slf4j:slf4j-api:1.4.2"
 	compile "org.slf4j:slf4j-log4j12:1.4.2"
 
