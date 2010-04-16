@@ -13,10 +13,6 @@ usePlugin com.xebia.gradle.plugins.AppEngine
 group = "com.xebia.adoptimizer"
 version = "0.1-SNAPSHOT"
 
-Properties props = new Properties()
-props.load(new FileInputStream("build.properties"))
-appEngineSdkRoot = props.appEngineSdkRoot
-
 repositories {
 	mavenRepo urls: "file://" + System.getProperty('user.home') + "/.m2/repository/"
 	mavenRepo urls: 'http://s3.amazonaws.com/maven.springframework.org/snapshot'

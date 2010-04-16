@@ -9,4 +9,4 @@ build
 .settings
 googleauth.properties
 .gradle
-build.properties
+appengine.properties

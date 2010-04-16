@@ -31,17 +31,21 @@ class AppEngine implements Plugin {
 }
 
 class AppEnginePluginConvention {
-  String appEngineSdkRoot = ''
+  Properties props = new Properties()
   Project project
 
   def AppEnginePluginConvention(project) {
     this.project = project;
+    if (!new File("appengine.properties").exists()) {
+      throw new InvalidUserDataException("appengine.properties should exist in build root dir")
+    }
+    props.load(new FileInputStream("appengine.properties"))
   }
 
   def init() {
-    if (appEngineSdkRoot == '') {
-      throw new InvalidUserDataException("Should set the appEngine SDK Root")
-    }
+    Properties props = new Properties()
     System.setProperty("appengine.sdk.root", appEngineSdkRoot)
   }
+
+  def propertyMissing(String name) { props[name] }
 }

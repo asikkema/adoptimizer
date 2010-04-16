@@ -5,7 +5,7 @@ repositories {
   add(new org.apache.ivy.plugins.resolver.URLResolver()) {
     name = "GitHub"
     addArtifactPattern 'http://github.com/asikkema/adoptimizer/downloads/[organization]-[module]-[revision].[ext]'
-}
+  }
 }
 
 
