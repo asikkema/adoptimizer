@@ -12,7 +12,7 @@ class AppEngine implements Plugin {
 
     project.convention.plugins.appengine = new AppEnginePluginConvention(project)
 
-    def war = project.getTasks().findByName("war")
+    def war = project.tasks.findByName("war")
 
     // Add the exploded-war to the war task
     def exploded = new File(project.buildDir, "exploded-war")
@@ -20,13 +20,14 @@ class AppEngine implements Plugin {
       ant.unzip(src: war.archivePath, dest: exploded)
     }
 
-
     project.task('upload') << {
       project.convention.plugins.appengine.init()
       AppCfg.main("update", exploded.toString())
     }
 
-    project.getTasks().findByName('upload').dependsOn war
+    
+
+    project.tasks.findByName('upload').dependsOn war
   }
 }
 
@@ -43,7 +44,6 @@ class AppEnginePluginConvention {
   }
 
   def init() {
-    Properties props = new Properties()
     System.setProperty("appengine.sdk.root", appEngineSdkRoot)
   }
 
