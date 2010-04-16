@@ -6,4 +6,7 @@ build
 *.ipr
 *.iws
 .idea
+.gradle
+.settings
 googleauth.properties
+build.properties

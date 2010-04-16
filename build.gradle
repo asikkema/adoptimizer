@@ -7,9 +7,15 @@ them.
 defaultTasks 'build'
 usePlugin 'java'
 usePlugin 'eclipse'
+usePlugin 'war'
+usePlugin com.xebia.gradle.plugins.AppEngine
 
 group = "com.xebia.adoptimizer"
 version = "0.1-SNAPSHOT"
+
+Properties props = new Properties()
+props.load(new FileInputStream("build.properties"))
+appEngineSdkRoot = props.appEngineSdkRoot
 
 repositories {
 	mavenRepo urls: "file://" + System.getProperty('user.home') + "/.m2/repository/"
@@ -24,7 +30,7 @@ repositories {
 
 sourceCompatibility = 1.6
 
-springVersion = "3.0.1.RELEASE-A"
+springVersion = "3.0.2.RELEASE"
 
 dependencies {
 	compile "org.slf4j:slf4j-api:1.4.2"

@@ -1,0 +1,15 @@
+usePlugin 'groovy'
+usePlugin 'eclipse'
+
+repositories {
+  add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+    name = "GitHub"
+    addArtifactPattern 'http://github.com/asikkema/adoptimizer/downloads/[organization]-[module]-[revision].[ext]'
+}
+}
+
+
+dependencies {
+    groovy "appengine:tools-api:1.3.2@jar"
+	groovy fileTree(dir: new File(gradle.gradleHomeDir, 'lib'), includes: ['*.jar'])
+}
