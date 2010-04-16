@@ -56,6 +56,9 @@ public class AnalyticsDataFeedTest {
         // Send our request to the Analytics API and wait for the results to
         // come back.
         feed = as.getFeed(url, DataFeed.class);
+        
+        printFeedData();
+        
     }
 
     /**

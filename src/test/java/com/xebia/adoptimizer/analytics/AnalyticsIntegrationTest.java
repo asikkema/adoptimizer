@@ -30,6 +30,8 @@ public class AnalyticsIntegrationTest {
         InputStream stream = AnalyticsIntegrationTest.class.getClassLoader().getResourceAsStream("googleauth.properties");
         props = new Properties();
         props.load(stream);
+        
+
     }
 
     @Test

@@ -6,4 +6,5 @@ build
 *.ipr
 *.iws
 .idea
+.settings
 googleauth.properties
