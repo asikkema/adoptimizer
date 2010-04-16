@@ -10,6 +10,5 @@ repositories {
 
 
 dependencies {
-    groovy "appengine:tools-api:1.3.2@jar"
 	groovy fileTree(dir: new File(gradle.gradleHomeDir, 'lib'), includes: ['*.jar'])
 }
