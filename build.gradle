@@ -5,26 +5,27 @@ them.
  */
 
 defaultTasks 'build'
-usePlugin 'java'
 usePlugin 'eclipse'
+usePlugin 'war'
+usePlugin com.xebia.gradle.plugins.AppEngine
 
 group = "com.xebia.adoptimizer"
 version = "0.1-SNAPSHOT"
 
 repositories {
-	mavenRepo urls: "file://" + System.getProperty('user.home') + "/.m2/repository/"
-	mavenRepo urls: 'http://s3.amazonaws.com/maven.springframework.org/snapshot'
-	mavenRepo urls: 'http://s3.amazonaws.com/maven.springframework.org/milestone'
-	mavenCentral()
-	add(new org.apache.ivy.plugins.resolver.URLResolver()) {
-		name = "GitHub"
-		addArtifactPattern 'http://github.com/asikkema/adoptimizer/downloads/[organization]-[module]-[revision].[ext]'
-	}
+  mavenRepo urls: "file://" + System.getProperty('user.home') + "/.m2/repository/"
+  mavenRepo urls: 'http://s3.amazonaws.com/maven.springframework.org/snapshot'
+  mavenRepo urls: 'http://s3.amazonaws.com/maven.springframework.org/milestone'
+  mavenCentral()
+  add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+    name = "GitHub"
+    addArtifactPattern 'http://github.com/asikkema/adoptimizer/downloads/[organization]-[module]-[revision].[ext]'
+  }
 }
 
 sourceCompatibility = 1.6
 
-springVersion = "3.0.1.RELEASE-A"
+springVersion = "3.0.2.RELEASE"
 
 dependencies {
 	compile "org.slf4j:slf4j-api:1.4.2"
@@ -43,4 +44,6 @@ dependencies {
 	testCompile "junit:junit:4.7"
 	testCompile "org.mockito:mockito-all:1.8.0"
 	testCompile "org.hamcrest:hamcrest-all:1.1"
+
+  compile "com.google.gwt:gwt-user:1.6.4"
 }
