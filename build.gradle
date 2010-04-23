@@ -3,6 +3,19 @@ Usage:
 Run 'gradle eclipse' to generate eclipse project files and import those into an IDE that supports
 them.
  */
+buildscript {
+	repositories {
+  		add(new org.apache.ivy.plugins.resolver.URLResolver()) {
+    		name = "GitHub"
+    		addArtifactPattern 'http://github.com/hierynomus/appengine-gradle-plugin/downloads/[organization]-[module]-[revision].[ext]'
+  		}
+	}
+
+	dependencies {
+		classpath 'com.xebia:appengine-gradle-plugin:0.2@jar'
+		classpath 'appengine:tools-api:1.3.2@jar'
+	}
+}
 
 defaultTasks 'build'
 usePlugin 'eclipse'
